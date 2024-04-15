@@ -1,0 +1,106 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    ViewBag.Title = "Index";
+                    
+}
+
+<head>
+</head>
+<body>
+    <section class="container pt-5 pb-5">
+        <div>
+            <h2>Helpers</h2>
+        </div>
+    </section>
+    <section class="border-top pt-5 pb-5">
+        @using (Html.BeginForm("index", "inicio", FormMethod.Post))
+        {
+            <div class="container d-flex">
+                <div class="container-sm">
+                    <p class="fw-bold">Nombre Usuario:</p>
+                </div>
+                <div class="container">
+                    @Html.TextBox("txtUserName", "", new { @class = "form-control" })
+                </div>
+            </div>
+            <br />
+            <div class="container d-flex">
+                <div class="container-sm">
+                    <p class="fw-bold">Password:</p>
+                </div>
+                <div class="container">
+                    @Html.Password("Password", "", new { @class = "form-control" })
+                </div>
+            </div>
+            <br />
+            <div class="container d-flex">
+                <div class="container-sm">
+                    <p class="fw-bold">Genero:</p>
+                </div>
+                <div class="container">
+                    @Html.RadioButton("Genero", "Masculino ", false, new { id = "masculino" })
+                    Masculino
+                    @Html.RadioButton("Genero", "Femenino ", false, new { id = "femenino" })
+                    Femenino
+                </div>
+            </div>
+            <br />
+            <div class="container d-flex">
+                <div class="container-sm">
+                    <p class="fw-bold">Ingrese su direccion:</p>
+                </div>
+                <div class="container">
+                    @Html.TextArea("Direccion", "Direccion aqui.",
+                             new { @class = "form-control", id = "idDireccion" })
+                </div>
+            </div>
+            <br />
+            <div class="container d-flex">
+                <div class="container-sm">
+                    <p class="fw-bold">Pasatiempo:</p>
+                </div>
+                <div class="container d-flex">
+                    <p>@Html.CheckBox("Bailar ") Bailar </p><br />
+                    <p>@Html.CheckBox("Correr ") Correr </p><br />
+                    <p>@Html.CheckBox("Escalar ") Escalar </p><br />
+                    <p>@Html.CheckBox("Peliculas ") Peliculas </p>
+                </div>
+            </div>
+            <br />
+            <div class="container d-flex">
+                <div class="container-sm">
+                    <p class="fw-bold">Curso:</p>
+                </div>
+                @{
+                    IEnumerable<string> strList = new List<string> { "- SELECCIONE UN CURSO -", "DAW", "SI", "MM", "REDES" };
+                }
+                <div class="container">
+
+                    @Html.DropDownList("ddlCurso", new SelectList(strList,
+                             strList.FirstOrDefault()), "- SELECCIONE UN CURSO -")
+                </div>
+            </div>
+            <div class="container d-flex">
+                <div class="container-sm"><p class="fw-bold">Conocimientos:</p></div>
+                <div class="container align-content-start">
+                    @Html.ListBox("Seleccione:", new List<SelectListItem>{ new SelectListItem {Text = "C #", Value = "1"}, new SelectListItem {Text = "ASP.NET", Value = "2"},
+                new SelectListItem {Text = "ASP.NET Core", Value = "3"}, new SelectListItem {Text = "Azure", Value = "4"}
+                })
+                </div>
+            </div>
+        }
+    </section>
+    <section class="border-top border-bottom pt-5 pb-5">
+        <div class="container d-grid col align-self-center align-content-center align-items-center">
+            <button type="button" class="btn btn-success btn-lg">Enviar Datos</button>
+        </div>
+    </section>
+</body>
+<footer class="bg-dark text-light p-3">
+    <div class="container text-center">
+        <p>P.08 MVC - Formularios con Razor y HTML Helper</p>
+        <p>Ana Daniela Giron Saavedra</p>
+    </div>
+</footer>
